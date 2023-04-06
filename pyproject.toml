@@ -8,12 +8,10 @@ packages = [{include = "mlflow_server"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-mlflow-skinny = "^2.2.2"
-flask = "^2.2.3"
-sqlalchemy = "^2.0.8"
-alembic = "^1.10.2"
 psycopg2-binary = "^2.9.5"
 boto3 = "^1.26.104"
+numba = "^0.56.4"
+mlflow = {extras = ["extras"], version = "^2.2.2"}
 
 
 [build-system]
