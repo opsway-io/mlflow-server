@@ -4,13 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["teisnp <teis.n.p@gmail.com>"]
 readme = "README.md"
-packages = [{include = "mlflow_server"}]
+package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.11"
 boto3 = "^1.26.104"
 numba = "^0.56.4"
-mlflow = {extras = ["extras"], version = "^2.2.2"}
+mlflow = {extras = ["extras"], version = "^3.3.2"}
 psycopg2-binary = "^2.9.6"
 
 
