@@ -8,10 +8,10 @@ ENV POETRY_NO_INTERACTION=1 \
     POETRY_CACHE_DIR=/tmp/poetry_cache \
     POETRY_HOME=/app/poetry
 
-COPY ./pyproject.toml ./poetry.lock /
+COPY ./pyproject.toml ./
 
 RUN pip install poetry==2.1.2
 
-RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
+RUN poetry lock && poetry install --no-root && rm -rf $POETRY_CACHE_DIR
 
 ENTRYPOINT GUNICORN_CMD_ARGS="--timeout 600" poetry run mlflow server --backend-store-uri postgresql+psycopg2://${DB_USERNAME}:${DB_PASSWORD}@${DB_URL}/${DB_NAME} --artifacts-destination ${ARTIFACT_STORE} --serve-artifacts --host 0.0.0.0 --port 5000
