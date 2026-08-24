@@ -28,7 +28,7 @@ jobs:
           branch=${GITHUB_REF##*/}
           sha=${GITHUB_SHA::8}
           ts=$(date +%s)
-          echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"
+          echo "BUILD_ID=${branch}-${sha}-${ts}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
